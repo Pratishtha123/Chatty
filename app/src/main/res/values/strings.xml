@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Chatty</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
