@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar_main)
 
         val toolbar:Toolbar=findViewById(R.id.toolbar_main)
+        setSupportActionBar(toolbar_main)
         supportActionBar!!.title=""
 
         val tabLayout:TabLayout=findViewById(R.id.tab_layout)
