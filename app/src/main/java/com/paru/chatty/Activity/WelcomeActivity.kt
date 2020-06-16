@@ -1,10 +1,11 @@
-package com.paru.chatty
+package com.paru.chatty.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.paru.chatty.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -16,13 +17,15 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         register_welcome_btn.setOnClickListener{
-            val intent=Intent(this@WelcomeActivity,RegisterActivity::class.java)
+            val intent=Intent(this@WelcomeActivity,
+                RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         login_welcome_btn.setOnClickListener{
-            val intent=Intent(this@WelcomeActivity,LoginActivity::class.java)
+            val intent=Intent(this@WelcomeActivity,
+                LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -36,7 +39,8 @@ class WelcomeActivity : AppCompatActivity() {
 
         if (firebaseUser!=null)
         {
-            val intent=Intent(this@WelcomeActivity,MainActivity::class.java)
+            val intent=Intent(this@WelcomeActivity,
+                MainActivity::class.java)
             startActivity(intent)
             finish()
         }

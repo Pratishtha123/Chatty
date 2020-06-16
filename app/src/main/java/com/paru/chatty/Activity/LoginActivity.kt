@@ -1,4 +1,4 @@
-package com.paru.chatty
+package com.paru.chatty.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import com.paru.chatty.R
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -23,7 +22,8 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar!!.title="Login"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
-            val intent= Intent(this@LoginActivity,WelcomeActivity::class.java)
+            val intent= Intent(this@LoginActivity,
+                WelcomeActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -52,7 +52,8 @@ class LoginActivity : AppCompatActivity() {
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener{task->
                 if(task.isSuccessful)
                 {
-                    val intent=Intent(this@LoginActivity,MainActivity::class.java)
+                    val intent=Intent(this@LoginActivity,
+                        MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()

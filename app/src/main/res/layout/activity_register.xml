@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register"
-    tools:context=".RegisterActivity">
+    tools:context=".Activity.RegisterActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

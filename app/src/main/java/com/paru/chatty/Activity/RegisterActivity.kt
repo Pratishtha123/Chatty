@@ -1,4 +1,4 @@
-package com.paru.chatty
+package com.paru.chatty.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_main.*
+import com.paru.chatty.R
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -26,7 +26,8 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar!!.title="Register Yourself"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
-            val intent= Intent(this@RegisterActivity,WelcomeActivity::class.java)
+            val intent= Intent(this@RegisterActivity,
+                WelcomeActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -79,7 +80,8 @@ class RegisterActivity : AppCompatActivity() {
                      refUsers.updateChildren(userHashMap).addOnCompleteListener{task->
                          if(task.isSuccessful)
                          {
-                             val intent=Intent(this@RegisterActivity,MainActivity::class.java)
+                             val intent=Intent(this@RegisterActivity,
+                                 MainActivity::class.java)
                              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                              startActivity(intent)
                              finish()
