@@ -59,7 +59,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/register_btn"
+            android:id="@+id/login_btn"
             android:background="@color/colorPrimaryDark"
             android:text="@string/login"
             android:textColor="#ffffff"
