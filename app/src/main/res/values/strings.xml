@@ -12,4 +12,5 @@
     <string name="create_a_new_account">Create a new account</string>
     <string name="enter_your_details">Enter your Details</string>
     <string name="signout">Signout</string>
+    <string name="type_your_message">type your message...</string>
 </resources>

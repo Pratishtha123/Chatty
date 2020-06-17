@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Activity.MessageChatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/barLayout_message_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_message_chat"
+            android:background="@color/colorPrimary">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image_mchat"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/profile"/>
+
+            <TextView
+                android:id="@+id/username_mchat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginLeft="26dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="user name"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_chats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/relative_layout_bottom"
+        android:layout_below="@id/barLayout_message_chat" />
+        
+    <RelativeLayout
+        android:id="@+id/relative_layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:padding="6dp">
+
+        <ImageView
+            android:id="@+id/attach_image_file_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_attach_file"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <EditText
+            android:id="@+id/text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"
+            android:layout_toRightOf="@id/attach_image_file_btn"
+            android:hint="@string/type_your_message"
+            android:layout_toLeftOf="@id/send_message_btn"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="6dp"/>
+
+
+        <ImageView
+            android:id="@+id/send_message_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_action_name"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
