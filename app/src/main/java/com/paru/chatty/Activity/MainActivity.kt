@@ -1,5 +1,6 @@
 package com.paru.chatty.Activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val progressBar= ProgressDialog(this)
+        progressBar.setMessage("Loading....")
+        progressBar.show()
+
         firebaseUser=FirebaseAuth.getInstance().currentUser
         refUsers=FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
 
@@ -61,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
                     user_name.text=user!!.getUserName()
                     Picasso.get().load(user.getProfile()).placeholder(R.drawable.profile).into(profile_image)
+                    progressBar.dismiss()
                 }
             }
 
