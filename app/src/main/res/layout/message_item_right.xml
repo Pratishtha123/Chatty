@@ -11,6 +11,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/show_text_message"
             android:layout_width="wrap_content"
