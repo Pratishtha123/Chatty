@@ -13,4 +13,6 @@
     <string name="enter_your_details">Enter your Details</string>
     <string name="signout">Signout</string>
     <string name="type_your_message">type your message...</string>
+    <string name="testing_msg">testing msg</string>
+    <string name="seen">seen</string>
 </resources>
