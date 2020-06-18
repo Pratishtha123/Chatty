@@ -136,7 +136,7 @@ class ChatAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        
+
         return  if(mChatList[position].getSender().equals(firebaseUser!!.uid))
         {
             1

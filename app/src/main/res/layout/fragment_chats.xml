@@ -6,13 +6,10 @@
     tools:context=".fragment.ChatsFragment"
     android:background="#ffffff">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_chatlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Chats"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"/>
+
 
 </RelativeLayout>
