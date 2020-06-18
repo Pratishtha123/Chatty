@@ -21,7 +21,7 @@ class ChatAdapter(
     mContext: Context,
     mChatList:List<Chat>,
     imageUrl:String
-):RecyclerView.Adapter<ChatAdapter.ViewHolder>()
+):RecyclerView.Adapter<ChatAdapter.ViewHolder? >()
 {
     private val mContext:Context
     private val mChatList:List<Chat>
