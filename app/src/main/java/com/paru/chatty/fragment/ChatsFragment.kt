@@ -13,9 +13,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.paru.chatty.AdapterClasses.UserAdapter
 import com.paru.chatty.ModelClasses.Chatlist
 import com.paru.chatty.ModelClasses.Users
+import com.paru.chatty.Notifications.Token
 
 import com.paru.chatty.R
 
@@ -68,7 +70,15 @@ class ChatsFragment : Fragment() {
             }
         })
 
+        updateToken(FirebaseInstanceId.getInstance().token)
+
         return  view
+    }
+
+    private fun updateToken(token: String?) {
+        val ref=FirebaseDatabase.getInstance().reference.child("Tokens")
+        val token1=Token(token!!)
+        ref.child(firebaseUser!!.uid).setValue(token1)
     }
 
     private fun retrieveChatList()

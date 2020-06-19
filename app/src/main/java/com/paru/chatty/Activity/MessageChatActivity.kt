@@ -22,9 +22,14 @@ import com.google.firebase.storage.UploadTask
 import com.paru.chatty.AdapterClasses.ChatAdapter
 import com.paru.chatty.ModelClasses.Chat
 import com.paru.chatty.ModelClasses.Users
+import com.paru.chatty.Notifications.*
 import com.paru.chatty.R
+import com.paru.chatty.fragment.APIService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_message_chat.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MessageChatActivity : AppCompatActivity() {
 
@@ -34,6 +39,9 @@ class MessageChatActivity : AppCompatActivity() {
     var mChatList:List<Chat>?=null
     lateinit var recycler_view_chats:RecyclerView
     var reference:DatabaseReference?=null
+
+    var notify=false
+    var apiService:APIService?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +58,8 @@ class MessageChatActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        apiService=Client.Client.getClient("https://fcm.googleapis.com/")!!.create(APIService::class.java)
 
         intent=intent
         userIdVisit=intent.getStringExtra("visit_id")
@@ -81,6 +91,7 @@ class MessageChatActivity : AppCompatActivity() {
         })
 
         send_message_btn.setOnClickListener{
+            notify=true
             val message=text_message.text.toString()
             if(message=="")
             {
@@ -94,6 +105,7 @@ class MessageChatActivity : AppCompatActivity() {
         }
 
         attach_image_file_btn.setOnClickListener{
+            notify=true
             val intent=Intent()
             intent.type="image/*"
             intent.action=Intent.ACTION_GET_CONTENT
@@ -143,18 +155,76 @@ class MessageChatActivity : AppCompatActivity() {
 
                         }
                     })
-
-
-
-                    //implement the push notifications
-
-
-
-                    val reference=FirebaseDatabase.getInstance().reference
-                        .child("users").child(firebaseUser!!.uid)
-
                 }
             }
+        //implementing the push notifications
+
+        val usersReference=FirebaseDatabase.getInstance().reference
+            .child("users").child(firebaseUser!!.uid)
+
+        usersReference.addValueEventListener(object :ValueEventListener{
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val user=p0.getValue(Users::class.java)
+                if (notify)
+                {
+                    sendNotification(receiverId,user!!.getUserName(),message)
+                }
+                notify=false
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+    }
+
+    private fun sendNotification(receiverId: String?, userName: String?, message: String) {
+
+        val ref=FirebaseDatabase.getInstance().reference.child("Tokens")
+
+        val query=ref.orderByKey().equalTo(receiverId)
+
+        query.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+
+                for(dataSnapshot in p0.children)
+                {
+                    val token:Token?=dataSnapshot.getValue(Token::class.java)
+
+                    val data=Data(firebaseUser!!.uid,R.drawable.chatty_icon,"$userName: $message","New Message",userIdVisit)
+
+                    val sender=Sender(data!!,token!!.getToken().toString())
+
+                    apiService!!.sendNotification(sender)
+                        .enqueue(object :Callback<MyResponse> {
+
+                            override fun onResponse(
+                                call: Call<MyResponse>,
+                                response: Response<MyResponse>
+                            ) {
+
+                                if(response.code()==200)
+                                {
+                                    if(response.body()!!.success!==1)
+                                    {
+                                        Toast.makeText(this@MessageChatActivity,"Failed, Nothing happened.",Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                            }
+
+                            override fun onFailure(call: Call<MyResponse>, t: Throwable) {
+
+                            }
+                        })
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -197,9 +267,35 @@ class MessageChatActivity : AppCompatActivity() {
                     messageHashMap["url"]=url
                     messageHashMap["messageId"]=messageId
 
-                    ref.child("Chats").child(messageId!!).setValue(messageHashMap)
+                    ref.child("Chats").child(messageId!!).setValue(messageHashMap).addOnCompleteListener{task ->
+                        if(task.isSuccessful)
+                        {
 
-                    progressBar.dismiss()
+                            progressBar.dismiss()
+
+                            //implementing the push notifications
+
+                            val reference=FirebaseDatabase.getInstance().reference
+                                .child("users").child(firebaseUser!!.uid)
+
+                            reference.addValueEventListener(object :ValueEventListener{
+
+                                override fun onDataChange(p0: DataSnapshot) {
+                                    val user=p0.getValue(Users::class.java)
+                                    if (notify)
+                                    {
+                                        sendNotification(userIdVisit,user!!.getUserName(),"sent you an image.")
+                                    }
+                                    notify=false
+                                }
+
+                                override fun onCancelled(p0: DatabaseError) {
+
+                                }
+                            })
+                        }
+                    }
+
                 }
             }
         }
