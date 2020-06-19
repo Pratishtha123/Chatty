@@ -246,7 +246,7 @@ class MessageChatActivity : AppCompatActivity() {
 
                     if(chat!!.getReceiver().equals(firebaseUser!!.uid) && chat!!.getSender().equals(userId))
                     {
-                        val hashMap=HashMap<String,Any>()
+                        val hashMap=HashMap<String, Any>()
                         hashMap["isseen"]=true
                         dataSnapshot.ref.updateChildren(hashMap)
                     }

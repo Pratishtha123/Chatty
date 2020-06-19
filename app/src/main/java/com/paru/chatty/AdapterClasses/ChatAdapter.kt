@@ -26,7 +26,7 @@ class ChatAdapter(
     private val mContext:Context
     private val mChatList:List<Chat>
     private val imageUrl:String
-    var firebaseUser:FirebaseUser?=FirebaseAuth.getInstance().currentUser!!
+    var firebaseUser:FirebaseUser =FirebaseAuth.getInstance().currentUser!!
 
     init {
         this.mContext=mContext
