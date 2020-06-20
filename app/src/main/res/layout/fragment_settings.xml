@@ -16,6 +16,7 @@
         
         <RelativeLayout
             android:layout_width="match_parent"
+            android:background="@drawable/rounded_corner_left"
             android:layout_height="wrap_content"
             android:padding="10dp">
 
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cv1"
         android:gravity="center"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/profile_view"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:padding="6dp">

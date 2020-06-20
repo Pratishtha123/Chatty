@@ -5,6 +5,7 @@
     android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".Activity.VisitUserProfileActivity">
 
     <androidx.cardview.widget.CardView
@@ -16,6 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_left"
             android:padding="10dp">
 
             <ImageView
@@ -57,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cv1"
         android:gravity="center"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/profile_view"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:padding="6dp">
@@ -104,6 +106,6 @@
         android:text="Send Message"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@drawable/profile_view"/>
 
 </RelativeLayout>
