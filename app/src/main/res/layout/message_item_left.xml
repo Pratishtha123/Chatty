@@ -33,7 +33,7 @@
         android:id="@+id/text_seen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/seen"
+        android:visibility="gone"
         android:layout_marginLeft="5dp"
         android:layout_below="@id/show_text_message"/>
 
