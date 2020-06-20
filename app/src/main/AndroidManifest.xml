@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/chat_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ViewFullImageActivity"></activity>
+        <activity android:name=".Activity.VisitUserProfileActivity"></activity>
+        <activity android:name=".Activity.ViewFullImageActivity" />
         <activity android:name=".Activity.MessageChatActivity" />
         <activity android:name=".Activity.WelcomeActivity">
             <intent-filter>

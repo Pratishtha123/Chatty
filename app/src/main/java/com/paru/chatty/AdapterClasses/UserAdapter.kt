@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.paru.chatty.Activity.MessageChatActivity
+import com.paru.chatty.Activity.VisitUserProfileActivity
 import com.paru.chatty.Activity.WelcomeActivity
 import com.paru.chatty.ModelClasses.Chat
 import com.paru.chatty.ModelClasses.Users
@@ -108,7 +109,10 @@ class UserAdapter(
                 }
                 if(position == 1)
                 {
-
+                    val intent= Intent(mContext,
+                        VisitUserProfileActivity::class.java)
+                    intent.putExtra("visit_id",user.getUID())
+                    mContext.startActivity(intent)
                 }
             })
             builder.show()

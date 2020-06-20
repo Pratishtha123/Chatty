@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.VisitUserProfileActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/cover_display"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/cover"
+                android:scaleType="centerCrop"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_display"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="140dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile"/>
+
+            <TextView
+                android:id="@+id/username_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:layout_below="@id/profile_display"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="20dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv1"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <ImageView
+            android:id="@+id/facebook_display"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/fb"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="35dp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/instagram_display"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/instagram"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/website_display"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/website"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send_msg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll1"
+        android:layout_marginTop="40dp"
+        android:textColor="#ffffff"
+        android:textAllCaps="false"
+        android:text="Send Message"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+
+</RelativeLayout>
