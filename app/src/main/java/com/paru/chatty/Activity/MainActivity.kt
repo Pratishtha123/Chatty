@@ -154,6 +154,24 @@ class MainActivity : AppCompatActivity() {
         override fun getPageTitle(position: Int): CharSequence? {
             return titles[position]
         }
+    }
 
+    private fun updateStatus(status:String)
+    {
+        val ref=FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
+
+        val hashmap= HashMap<String,Any>()
+        hashmap["status"] = status
+        ref!!.updateChildren(hashmap)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateStatus("online")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        updateStatus("offline")
     }
 }
