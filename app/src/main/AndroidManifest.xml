@@ -12,20 +12,35 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/chat_app_icon_round"
         android:supportsRtl="true"
+        android:resizeableActivity="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.VisitUserProfileActivity"></activity>
-        <activity android:name=".Activity.ViewFullImageActivity" />
-        <activity android:name=".Activity.MessageChatActivity" />
-        <activity android:name=".Activity.WelcomeActivity">
+        <activity android:name=".Activity.VisitUserProfileActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".Activity.ViewFullImageActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".Activity.MessageChatActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".Activity.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".Activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".Activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"></activity>
 
         <service
             android:name=".Notifications.MyFirebaseMessaging"
