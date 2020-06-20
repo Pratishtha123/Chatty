@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/chat_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MessageChatActivity"></activity>
+        <activity android:name=".Activity.ViewFullImageActivity"></activity>
+        <activity android:name=".Activity.MessageChatActivity" />
         <activity android:name=".Activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,21 +24,22 @@
         </activity>
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.MainActivity" />
 
         <service
             android:name=".Notifications.MyFirebaseMessaging"
-            android:exported="true"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".Notifications.MyFirebaseInstanceId"
-            android:exported="true"
-            android:enabled="true">
+        <service
+            android:name=".Notifications.MyFirebaseInstanceId"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
     </application>
