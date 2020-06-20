@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.paru.chatty.Activity.MainActivity
 import com.paru.chatty.Activity.MessageChatActivity
 
 class MyFirebaseMessaging:FirebaseMessagingService()
@@ -72,6 +73,9 @@ class MyFirebaseMessaging:FirebaseMessagingService()
             .setSound(defaultSound)
             .setContentIntent(pendingIntent)
 
+        var contentIntent:PendingIntent= PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_UPDATE_CURRENT)
+        builder.setContentIntent(contentIntent)
+
         var noti=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         var i=0
@@ -106,6 +110,9 @@ class MyFirebaseMessaging:FirebaseMessagingService()
         val oreoNotification= OreoNotification(this)
 
         val builder:Notification.Builder=oreoNotification.getOreoNotification(title,body,pendingIntent,defaultSound,icon)
+
+        var contentIntent:PendingIntent= PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_UPDATE_CURRENT)
+        builder.setContentIntent(contentIntent)
 
         var i=0
         if(j>0)
