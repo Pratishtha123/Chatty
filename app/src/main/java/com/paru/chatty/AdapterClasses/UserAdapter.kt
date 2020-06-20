@@ -10,8 +10,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.paru.chatty.Activity.MessageChatActivity
 import com.paru.chatty.Activity.WelcomeActivity
+import com.paru.chatty.ModelClasses.Chat
 import com.paru.chatty.ModelClasses.Users
 import com.paru.chatty.R
 import com.squareup.picasso.Picasso
@@ -30,6 +36,7 @@ class UserAdapter(
     private val mContext:Context
     private val mUsers:List<Users>
     private val isChatCheck:Boolean
+    var lastMsg:String=""
 
     init {
         this.mUsers=mUsers
@@ -53,6 +60,34 @@ class UserAdapter(
 
         holder.userNameTxt.text=user!!.getUserName()
         Picasso.get().load(user.getProfile()).placeholder(R.drawable.profile).into(holder.profileImageView)
+
+        if(isChatCheck)
+        {
+            retrieveLastMessage(user.getUID(),holder.lastMessageTxt)
+        }
+        else
+        {
+            holder.lastMessageTxt.visibility=View.GONE
+        }
+
+        if (isChatCheck)
+        {
+            if (user.getStatus()== "online")
+            {
+                holder.onlineImageView.visibility=View.VISIBLE
+                holder.offlineImageView.visibility=View.GONE
+            }
+            else
+            {
+                holder.onlineImageView.visibility=View.GONE
+                holder.offlineImageView.visibility=View.VISIBLE
+            }
+        }
+        else
+        {
+            holder.onlineImageView.visibility=View.GONE
+            holder.offlineImageView.visibility=View.GONE
+        }
 
 
         holder.itemView.setOnClickListener{
@@ -81,6 +116,7 @@ class UserAdapter(
 
     }
 
+
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
     {
         var userNameTxt:TextView
@@ -96,6 +132,44 @@ class UserAdapter(
             offlineImageView=itemView.findViewById(R.id.image_offline)
             lastMessageTxt=itemView.findViewById(R.id.message_last)
         }
+    }
+
+    private fun retrieveLastMessage(chatUserId: String?, lastMessageTxt: TextView) {
+
+        lastMsg="defaultMsg"
+
+        val firebaseUser=FirebaseAuth.getInstance().currentUser
+        val reference=FirebaseDatabase.getInstance().reference.child("Chats")
+
+        reference.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                for (dataSnapshot in p0.children)
+                {
+                    val chat:Chat?=dataSnapshot.getValue(Chat::class.java)
+
+                    if (firebaseUser!=null && chat!=null)
+                    {
+                        if (chat.getReceiver()==firebaseUser!!.uid && chat.getSender()==chatUserId||
+                                chat.getReceiver()==chatUserId && chat.getSender()==firebaseUser!!.uid)
+                        {
+                            lastMsg=chat.getMessage()!!
+                        }
+                    }
+                }
+                when(lastMsg)
+                {
+                    "defaultMsg" -> lastMessageTxt.text="No Message"
+                    "sent you an image." -> lastMessageTxt.text="image sent"
+                    else -> lastMessageTxt.text=lastMsg
+                }
+                lastMsg="defaultMsg"
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+
     }
 
 }
