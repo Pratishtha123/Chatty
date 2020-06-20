@@ -48,7 +48,7 @@ class UserAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view:View=LayoutInflater.from(mContext).inflate(R.layout.user_search_item_layout,parent,false)
-        return UserAdapter.ViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -90,8 +90,21 @@ class UserAdapter(
             holder.offlineImageView.visibility=View.GONE
         }
 
+        holder.profileImageView.setOnClickListener{
+            val intent= Intent(mContext,
+                VisitUserProfileActivity::class.java)
+            intent.putExtra("visit_id",user.getUID())
+            mContext.startActivity(intent)
+        }
 
         holder.itemView.setOnClickListener{
+            val intent= Intent(mContext,
+                MessageChatActivity::class.java)
+            intent.putExtra("visit_id",user.getUID())
+            mContext.startActivity(intent)
+        }
+
+       /* holder.itemView.setOnClickListener{
             val options= arrayOf<CharSequence>(
                 "Send Message",
                 "Visit Profile"
@@ -105,7 +118,6 @@ class UserAdapter(
                         MessageChatActivity::class.java)
                     intent.putExtra("visit_id",user.getUID())
                     mContext.startActivity(intent)
-
                 }
                 if(position == 1)
                 {
@@ -117,6 +129,7 @@ class UserAdapter(
             })
             builder.show()
         }
+        */
 
     }
 
