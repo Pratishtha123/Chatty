@@ -16,15 +16,17 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/profile_image"
         android:layout_marginLeft="6dp"
+        android:background="@drawable/rounded_corner_left"
         android:textSize="18sp"
+        android:textColor="#000000"
         android:padding="8dp"
-        android:text="@string/testing_msg"
-        android:background="#00ffffff"/>
+        android:text="@string/testing_msg" />
 
     <ImageView
         android:id="@+id/left_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:background="@drawable/rounded_corner_left"
         android:layout_toRightOf="@id/profile_image"
         android:layout_marginLeft="6dp"
         android:visibility="gone"/>

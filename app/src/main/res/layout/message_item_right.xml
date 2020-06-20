@@ -28,12 +28,13 @@
             android:textSize="18sp"
             android:padding="8dp"
             android:text="@string/testing_msg"
-            android:background="@color/colorPrimary"/>
+            android:background="@drawable/rounded_corner_right"/>
 
         <ImageView
             android:id="@+id/right_image_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@drawable/rounded_corner_right"
            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:visibility="gone"/>
