@@ -28,7 +28,7 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Splash_Activity"
+            android:name=".Activity.Splash_Activity2"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>

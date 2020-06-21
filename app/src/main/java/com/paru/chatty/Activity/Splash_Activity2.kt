@@ -6,17 +6,17 @@ import android.os.Bundle
 import android.os.Handler
 import com.paru.chatty.R
 
-class Splash_Activity : AppCompatActivity() {
+class Splash_Activity2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_splash2)
 
 
         Handler().postDelayed({
-            val intent= Intent(this@Splash_Activity, WelcomeActivity::class.java)
+            val intent= Intent(this@Splash_Activity2, WelcomeActivity::class.java)
             startActivity(intent)
-        },2000)
+        },5000)
     }
 
     override fun onPause() {
