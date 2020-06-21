@@ -80,7 +80,7 @@
         android:layout_marginTop="60dp"
         android:id="@+id/splashAnimation"
         app:lottie_loop="true"
-        app:lottie_fileName="data_plane.json"
+        app:lottie_fileName="data_login.json"
         app:lottie_autoPlay="true"/>
 
 </RelativeLayout>

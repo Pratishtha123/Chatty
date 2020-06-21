@@ -84,7 +84,6 @@
 
 </LinearLayout>
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="180dp"
         android:layout_height="180dp"
@@ -93,7 +92,7 @@
         android:id="@+id/splashAnimation"
         android:layout_marginRight="-30dp"
         app:lottie_loop="true"
-        app:lottie_fileName="data_man.json"
+        app:lottie_fileName="data_register.json"
         app:lottie_autoPlay="true"/>
 
 </RelativeLayout>
