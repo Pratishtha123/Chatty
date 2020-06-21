@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="@drawable/login_dark"
     tools:context=".Activity.RegisterActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -36,7 +36,7 @@
         android:layout_marginBottom="25dp"
         android:textStyle="bold"
         android:textSize="25sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
 
    <EditText
         android:layout_width="match_parent"
@@ -44,7 +44,9 @@
         android:layout_marginTop="10dp"
         android:id="@+id/username_register"
         android:inputType="text"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
+       android:textColorHint="#ffffff"
+       android:backgroundTint="#ffffff"
         android:hint="@string/username"/>
 
     <EditText
@@ -52,7 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/email_register"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:backgroundTint="#ffffff"
         android:inputType="textEmailAddress"
         android:hint="@string/email"/>
 
@@ -60,7 +64,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:backgroundTint="#ffffff"
         android:id="@+id/password_register"
         android:inputType="textPassword"
         android:hint="@string/password"/>
@@ -69,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register_btn"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/profile_view"
         android:text="@string/register"
         android:textColor="#ffffff"
         android:textStyle="bold"
@@ -77,5 +83,17 @@
         android:layout_marginTop="30dp"/>
 
 </LinearLayout>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/splashAnimation"
+        android:layout_marginRight="-30dp"
+        app:lottie_loop="true"
+        app:lottie_fileName="data_man.json"
+        app:lottie_autoPlay="true"/>
 
 </RelativeLayout>
