@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_search, container, false)
+        val view:View= inflater.inflate(R.layout.fragment_search, container, false)
 
         recyclerView=view.findViewById(R.id.searchList)
         recyclerView!!.setHasFixedSize(true)
@@ -66,7 +66,7 @@ class SearchFragment : Fragment() {
 
     private fun retrieveAllUsers() {
         var firebaseUserID=FirebaseAuth.getInstance().currentUser!!.uid
-        var refUsers= FirebaseDatabase.getInstance().reference.child("users")
+        val refUsers= FirebaseDatabase.getInstance().reference.child("users")
 
         refUsers.addValueEventListener(object :ValueEventListener{
 
@@ -99,7 +99,7 @@ class SearchFragment : Fragment() {
     private  fun searchForUsers(str:String)
     {
         var firebaseUserID=FirebaseAuth.getInstance().currentUser!!.uid
-        var queryUsers= FirebaseDatabase.getInstance().reference
+        val queryUsers= FirebaseDatabase.getInstance().reference
             .child("users").orderByChild("search")
             .startAt(str)
             .endAt(str + "\uf8ff")

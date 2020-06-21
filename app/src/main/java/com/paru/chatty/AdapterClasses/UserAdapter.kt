@@ -22,6 +22,7 @@ import com.paru.chatty.ModelClasses.Chat
 import com.paru.chatty.ModelClasses.Users
 import com.paru.chatty.R
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_main.view.profile_image
@@ -36,7 +37,7 @@ class UserAdapter(
 {
     private val mContext:Context
     private val mUsers:List<Users>
-    private val isChatCheck:Boolean
+    private var isChatCheck:Boolean
     var lastMsg:String=""
 
     init {
@@ -137,9 +138,9 @@ class UserAdapter(
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
     {
         var userNameTxt:TextView
-        var profileImageView:ImageView
-        var onlineImageView:ImageView
-        var offlineImageView:ImageView
+        var profileImageView:CircleImageView
+        var onlineImageView:CircleImageView
+        var offlineImageView:CircleImageView
         var lastMessageTxt:TextView
 
         init {
