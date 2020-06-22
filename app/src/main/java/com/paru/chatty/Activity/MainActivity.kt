@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.RelativeLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -29,14 +31,13 @@ class MainActivity : AppCompatActivity() {
 
     var refUsers:DatabaseReference?=null
     var firebaseUser:FirebaseUser?=null
+    lateinit var progressLayout:RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val progressBar= ProgressDialog(this)
-        progressBar.setMessage("Loading....")
-        progressBar.show()
+        progressLayout=findViewById(R.id.progressLayout)
 
         firebaseUser=FirebaseAuth.getInstance().currentUser
         refUsers=FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
@@ -92,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
                     user_name.text=user!!.getUserName()
                     Picasso.get().load(user.getProfile()).placeholder(R.drawable.profile).into(profile_image)
-                    progressBar.dismiss()
+                    progressLayout.visibility=View.GONE
                 }
             }
 

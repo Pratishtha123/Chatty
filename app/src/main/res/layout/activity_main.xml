@@ -4,9 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff"
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="visible">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/splashAnimation"
+            app:lottie_loop="true"
+            app:lottie_fileName="data_loading.json"
+            app:lottie_autoPlay="true"/>
+
+    </RelativeLayout>
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -52,7 +68,6 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
     </androidx.viewpager.widget.ViewPager>
 
