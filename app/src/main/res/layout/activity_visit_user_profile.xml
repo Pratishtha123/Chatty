@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="60dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/cover_display"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:src="@drawable/cover"
                 android:scaleType="centerCrop"/>
 
@@ -33,7 +33,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="90dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/profile"/>
 
@@ -44,11 +44,10 @@
                 android:text="username"
                 android:layout_below="@id/profile_display"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginVertical="15dp"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginBottom="15dp"/>
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -104,7 +103,7 @@
         android:layout_marginTop="40dp"
         android:textColor="#ffffff"
         android:textAllCaps="false"
-        android:text="Send Message"
+        android:text="@string/send_message"
         android:textSize="20sp"
         android:textStyle="bold"
         android:background="@drawable/profile_view"/>

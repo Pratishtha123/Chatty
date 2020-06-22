@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000000"
     tools:context=".fragment.ChatsFragment">
 
@@ -11,6 +12,16 @@
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/splashAnimation"
+        app:lottie_loop="true"
+        app:lottie_fileName="data_chat.json"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:lottie_autoPlay="true"/>
 
 
 </RelativeLayout>

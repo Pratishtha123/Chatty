@@ -15,4 +15,5 @@
     <string name="type_your_message">type your message...</string>
     <string name="testing_msg">testing msg</string>
     <string name="seen">seen</string>
+    <string name="send_message">Send Message</string>
 </resources>
