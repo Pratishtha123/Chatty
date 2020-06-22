@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#000000"
     tools:context=".fragment.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:backgroundTint="#ffffff"
         android:hint="Search users here..."
         android:inputType="text"/>
 
