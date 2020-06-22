@@ -40,33 +40,45 @@
 
    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:id="@+id/username_register"
         android:inputType="text"
+       android:drawableStart="@drawable/custom_user_icon"
+       android:drawablePadding="12dp"
+       android:paddingEnd="12dp"
+       android:paddingStart="12dp"
+       android:background="@drawable/custom_input"
         android:textColor="#ffffff"
        android:textColorHint="#ffffff"
-       android:backgroundTint="#ffffff"
         android:hint="@string/username"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:id="@+id/email_register"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:drawablePadding="12dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:background="@drawable/custom_input"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        android:backgroundTint="#ffffff"
         android:inputType="textEmailAddress"
         android:hint="@string/email"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/custom_lock_icon"
+        android:drawablePadding="12dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:background="@drawable/custom_input"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        android:backgroundTint="#ffffff"
         android:id="@+id/password_register"
         android:inputType="textPassword"
         android:hint="@string/password"/>
