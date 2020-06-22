@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="30dp"
-    android:background="#ffffff"
+    android:background="#000000"
     tools:context=".fragment.SettingsFragment">
 
-   
     <androidx.cardview.widget.CardView
         android:id="@+id/cv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
         android:layout_marginTop="10dp">
         
         <RelativeLayout
@@ -47,7 +48,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="15dp"/>
 
         </RelativeLayout>
         
@@ -58,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cv1"
         android:gravity="center"
-        android:background="@drawable/profile_view"
+        android:background="#000000"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:padding="6dp">
@@ -67,7 +68,7 @@
             android:id="@+id/set_facebook"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/fb"
+            android:src="@drawable/fb_new"
             android:scaleType="centerCrop"
             android:layout_marginTop="2dp"
             android:layout_marginRight="35dp"
