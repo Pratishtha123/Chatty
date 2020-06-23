@@ -3,6 +3,7 @@ package com.paru.chatty.fragment
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -12,7 +13,9 @@ import android.view.LayoutInflater
 import android.view.View
 import com.google.firebase.storage.StorageReference
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
@@ -23,16 +26,26 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.google.gson.internal.`$Gson$Preconditions`
+import com.paru.chatty.Activity.Splash_Activity
 import com.paru.chatty.ModelClasses.Users
 
 import com.paru.chatty.R
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_settings.view.*
+import kotlinx.android.synthetic.main.fragment_settings.view.username_settings
+import kotlin.math.log
 
 /**
  * A simple [Fragment] subclass.
  */
 class SettingsFragment : Fragment() {
+
+    lateinit var changeName:Button
+    lateinit var social_media:Button
+    lateinit var logOut:Button
+    lateinit var ll1:LinearLayout
 
     var userReference:DatabaseReference?=null
     var firebaseUser: FirebaseUser?=null
@@ -53,6 +66,10 @@ class SettingsFragment : Fragment() {
         userReference=FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
         storageRef=FirebaseStorage.getInstance().reference.child("User Images")
 
+        logOut=view.findViewById(R.id.logOut)
+        changeName=view.findViewById(R.id.changeName)
+        social_media=view.findViewById(R.id.social_media)
+        ll1=view.findViewById(R.id.ll1)
 
         userReference!!.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
@@ -98,6 +115,61 @@ class SettingsFragment : Fragment() {
         view.set_website.setOnClickListener{
             socialChecker="website"
             setSocialLinks()
+        }
+
+        logOut.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+
+            val intent= Intent(activity as Context,
+                Splash_Activity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            getActivity()!!.finish()
+        }
+
+        changeName.setOnClickListener{
+
+            val builder:AlertDialog.Builder=
+                AlertDialog.Builder(context!!,R.style.Theme_AppCompat_DayNight_Dialog_Alert )
+            builder.setTitle("Write new Username:")
+            val editText=EditText(context)
+            editText.hint="e.g. John"
+            builder.setView(editText)
+
+            builder.setPositiveButton("Ok",DialogInterface.OnClickListener{dialog,which->
+                var username=editText.text.toString()
+
+                if(username == "")
+                {
+                    Toast.makeText(context,"Please write something...", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    val userhashmap= HashMap<String,Any>()
+                    userhashmap["username"] =username
+                    userReference!!.updateChildren(userhashmap).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(context, "updated successfully...", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            })
+            builder.setNegativeButton("Cancel",DialogInterface.OnClickListener{
+                    dialog, which ->
+                dialog.cancel()
+            })
+            builder.show()
+        }
+
+        social_media.setOnClickListener{
+            if(ll1.visibility==View.GONE)
+            {
+                ll1.visibility=View.VISIBLE
+            }
+           else
+            {
+                ll1.visibility=View.GONE
+            }
         }
 
         return view
@@ -168,7 +240,7 @@ class SettingsFragment : Fragment() {
         userReference!!.updateChildren(mapSocial).addOnCompleteListener{task->
             if (task.isSuccessful)
             {
-                Toast.makeText(context,"updates successfully...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"updated successfully...", Toast.LENGTH_SHORT).show()
             }
         }
     }
