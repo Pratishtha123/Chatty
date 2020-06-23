@@ -1,111 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="20dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#000000"
-    tools:context=".Activity.VisitUserProfileActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.SettingsFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:layout_marginTop="60dp">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner_left"
-            android:padding="10dp">
+            android:background="@drawable/settings_card">
 
-            <ImageView
-                android:id="@+id/cover_display"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:src="@drawable/cover"
-                android:scaleType="centerCrop"/>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_display"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="90dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/profile"/>
-
-            <TextView
-                android:id="@+id/username_display"
-                android:layout_width="wrap_content"
+                android:background="#000000"
                 android:layout_height="wrap_content"
-                android:text="username"
-                android:layout_below="@id/profile_display"
-                android:layout_centerHorizontal="true"
-                android:layout_marginVertical="15dp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:padding="10dp">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/cover_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/cover"
+                    android:scaleType="centerCrop"/>
 
-    </androidx.cardview.widget.CardView>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_display"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="140dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile"/>
 
-    <LinearLayout
-        android:id="@+id/ll1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cv1"
-        android:gravity="center"
-        android:background="#000000"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        android:padding="6dp">
+                <TextView
+                    android:id="@+id/username_display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_name"
+                    android:layout_below="@id/profile_display"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginVertical="15dp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="25sp" />
 
-        <ImageView
-            android:id="@+id/facebook_display"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/fb_new"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="35dp"
-            android:layout_gravity="center"/>
+            </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/instagram_display"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/instagram"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"
-            android:layout_gravity="center"/>
+        </androidx.cardview.widget.CardView>
 
-        <ImageView
-            android:id="@+id/website_display"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/website"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="35dp"
-            android:layout_gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv1"
+            android:gravity="center"
+            android:background="#000000"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:padding="6dp">
 
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/send_msg_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll1"
-        android:layout_marginTop="40dp"
-        android:textColor="#ffffff"
-        android:textAllCaps="false"
-        android:text="@string/send_message"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:background="@drawable/profile_view"/>
+            <Button
+                android:id="@+id/social_media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_right"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginVertical="10dp"
+                android:text="@string/social_media"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
-</RelativeLayout>
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv1"
+                android:gravity="center"
+                android:background="#000000"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="6dp">
+
+                <ImageView
+                    android:id="@+id/facebook_display"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/fb_new"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/instagram_display"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/instagram"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="2dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/website_display"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/website"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/send_msg_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_right"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginVertical="10dp"
+                android:text="@string/send_message"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

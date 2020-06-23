@@ -17,9 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.paru.chatty.AdapterClasses.UserAdapter
 import com.paru.chatty.ModelClasses.Users
-
 import com.paru.chatty.R
-import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
  * A simple [Fragment] subclass.

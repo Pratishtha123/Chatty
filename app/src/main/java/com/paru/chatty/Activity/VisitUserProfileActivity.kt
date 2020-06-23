@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -17,12 +19,14 @@ class VisitUserProfileActivity : AppCompatActivity() {
 
     private var userVisitId:String=""
     var user:Users?=null
+    lateinit var ll1: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visit_user_profile)
 
         userVisitId=intent.getStringExtra("visit_id")
+        ll1=findViewById(R.id.ll1)
 
         val ref=FirebaseDatabase.getInstance().reference.child("users").child(userVisitId)
         ref.addValueEventListener(object :ValueEventListener{
@@ -42,6 +46,17 @@ class VisitUserProfileActivity : AppCompatActivity() {
 
             }
         })
+
+        social_media.setOnClickListener{
+            if(ll1.visibility== View.GONE)
+            {
+                ll1.visibility= View.VISIBLE
+            }
+            else
+            {
+                ll1.visibility= View.GONE
+            }
+        }
 
         facebook_display.setOnClickListener{
             val uri=Uri.parse(user!!.getFacebook())
