@@ -1,14 +1,14 @@
 # Chatty
-A light-weight and powerful Chat app...
+A light-weight and powerful Chat app.
 
 ---
 
 ## Features
 
--Chatting app
+- Chatting app
 
--Implementing app with features
+- Implementing app with features
 
--Login Authentication using Email 
+- Login Authentication using Email 
 
--Database integration with Firebase
+- Database integration with Firebase
