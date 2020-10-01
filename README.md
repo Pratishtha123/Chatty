@@ -5,7 +5,7 @@ A light-weight and powerful Chat app.
 
 ## Features
 
-- Chatting app
+- Chatting app, Awesome UI, lightweight for seamless and realtime chatting
 
 - Implementing app with features
 
